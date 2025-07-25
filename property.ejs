@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>properties</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .propertytable {
+            position: absolute;
+            top: 20vh;
+            width: 80%;
+            left: 10vw;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        PROPERTY LIST
+    </h1>
+    <!-- <form action="/searchproperty">
+        <input type="search" name="name" placeholder="enter name">
+        <input type="search" name="city" placeholder="enter city">
+        <input type="submit" value="searchproperty">
+    </form> -->
+    <div class="propertytable">
+        <table class="table table-striped">
+            <tr class="table-info">
+                <th> S.no </th>
+                <th> NAME </th>
+                <th> CITY </th>
+                <th> PHONE </th>
+                <th>ACTIONS</th>
+                <% if(properties.length>0){ %>
+                    <% for(let i=0;i<properties.length;i++){ %>
+            <tr table-info>
+                <td class="table-info"><%- properties[i].property_id %></td>
+                <td class="table-info"><%- properties[i].property_name %></td>
+                <td class="table-info"><%- properties[i].property_city %></td>
+                <td class="table-info"><%- properties[i].property_contact %></td>
+                <td class="table-info"><a href="/deleteproperty?id=<%- properties[i].property_id %>">DELETE</a>
+                    <a href="/updateproperty?id=<%- properties[i].property_id %>">UPDATE</a>
+                </td>
+            </tr>
+            <% } %>
+                <% }else{ %>
+                    <h1>data not found !</h1>
+                    <% } %>
+                        </tr>
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>properties</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .propertytable {
+            position: absolute;
+            top: 55vh;
+            width: 80%;
+            left: 10vw;
+        }
+
+        .form {
+            position: absolute;
+            top: 20vh;
+            width: 80%;
+            left: 10vw;
+        }
+
+        #first {
+            margin: 2vh 0vh 2vh 0px;
+        }
+
+        button {
+            position: absolute;
+            border: none;
+            color: #fff;
+            background-image: linear-gradient(30deg, #2e2aff, #4ce3f7);
+            border-radius: 20px;
+            background-size: 100% auto;
+            font-family: inherit;
+            font-size: 17px;
+            padding: 0.6em 1.5em;
+            top: 25vh;
+            left: 0vw;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+
+        button a {
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+
+        }
+
+        button:hover {
+            background-position: right center;
+            background-size: 200% auto;
+            -webkit-animation: pulse 2s infinite;
+            animation: pulse512 1.5s infinite;
+        }
+
+        @keyframes pulse512 {
+            0% {
+                box-shadow: 0 0 0 0 #05bada66;
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        PROPERTY LIST
+    </h1>
+    <div class="form">
+        <form action="/search">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>SELECT AN OPTION</option>
+                <option value="1" name="rent">RENT</option>
+                <option value="2" name="buy">BUY</option>
+            </select>
+            <div class="input-group input-group-lg">
+                <input type="search" name="name" id="first" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" placeholder="enter name">
+            </div>
+            <div class="input-group input-group-lg">
+                <input type="search" name="city" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" placeholder="enter city">
+            </div>
+            <button type="submit" value="search">VIEW LISTINGS</button>
+            <!-- <input type="submit" value="search"> -->
+        </form>
+    </div>
+    <div class="propertytable">
+        <table class="table table-striped">
+            <tr class="table-info">
+                <th> S.no </th>
+                <th> NAME </th>
+                <th> CITY </th>
+                <th> PHONE </th>
+                <th> ACTIONS </th>
+                <% if(properties.length>0){ %>
+                    <% for(let i=0;i<properties.length;i++){ %>
+            <tr table-info>
+                <td class="table-info"><%- properties[i].property_id %></td>
+                <td class="table-info"><%- properties[i].property_name %></td>
+                <td class="table-info"><%- properties[i].property_city %></td>
+                <td class="table-info"><%- properties[i].property_contact %></td>
+                <td><a href="/deleteproperty?id=<%- properties[i].property_id %>"></a></td>
+            </tr>
+            <% } %>
+                <% }else{ %>
+                    <h1>data not found !</h1>
+                    <% } %>
+                        </tr>
+        </table>
+    </div>
+</body>
+
+</html>

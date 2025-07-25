@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users</title>
+</head>
+<body>
+    <h1>
+        users list
+    </h1>
+    <table>
+        <tr>
+            <th> S.no </th>
+            <th> NAME </th>
+            <th> EMAIL </th>
+            <th> PHONE </th>
+            <% if(users.length>0){ %>
+             <% for(let i=0;i<users.length;i++){ %>
+                <tr>
+                    <td><%- users[i].id %></td>
+                    <td><%- users[i].user_name %></td>
+                    <td><%- users[i].user_email %></td>
+                    <td><%- users[i].user_phone %></td>
+                </tr>
+             <%   } %>
+            <% }else{ %>
+                <h1>students data not found !</h1>
+            <% } %>
+        </tr>
+    </table>
+</body>
+</html>
+
+
